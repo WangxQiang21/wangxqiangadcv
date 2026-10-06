@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "internships": "Internships",
+    "competitions": "Competitions",
+    "projects": "Projects",
+    "publications": "Papers",
+    "timeline": "Timeline",
+    "skills": "Stack"
+  },
+  "intro": {
+    "avatarAlt": "Qiang Wang's portrait",
+    "title": "Hello, I'm Qiang Wang",
+    "desc": "I am a 2027 master’s candidate in Transportation Engineering at Wuhan University of Technology, focusing on autonomous driving planning and control. At Jiwei and Neolix, I worked across production issue diagnosis, simulation, obstacle avoidance, speed planning, and joint path-speed optimization. I use C++, ROS, and optimization-based control, and helped test 15 real-vehicle scenarios with the national-champion OnSite team."
+  },
+  "internships": {
+    "title": "Internship Experience",
+    "item0": {
+      "period": "2026.06 — 2026.09",
+      "title": "Neolix · PNC Algorithm Intern",
+      "desc": "Built planning and control for autonomous delivery vehicles in tight turns, multi-obstacle detours, and uncertain oncoming-traffic conflicts. Designed XY-sliced DAG driving corridors, pruning dead ends with BFS, vehicle reachability, and reverse checks. Developed a two-branch CMPC/OSQP speed planner, then extended Path iLQR to optimize path and speed together with lateral-acceleration and jerk constraints for safer, smoother driving.",
+      "imageAlt": "Neolix internship vehicle photo and planning algorithm diagrams"
+    },
+    "item1": {
+      "period": "2026.04 — 2026.06",
+      "title": "Jiwei · PNC Algorithm Intern",
+      "desc": "Traced production issues through logs, code, and simulation, helping close 50+ cases with an average turnaround of about two days. To prevent unnecessary detours around queued traffic, combined vehicle state, brake-light timing, behavior history, and temporal hysteresis into stable follow-and-stop decisions. Reworked direction-aware TCD search and corridor boundaries around fast oncoming vehicles to reduce lane-crossing and collision risk.",
+      "imageAlt": "Jiwei internship vehicle and planning-control visualizations"
+    }
+  },
+  "competitions": {
+    "title": "Autonomous Driving Competitions",
+    "imgAlt": "OnSite competition photo and award certificates",
+    "links": {
+      "official": "Official coverage",
+      "video": "Play videos",
+      "hideVideo": "Hide videos"
+    },
+    "videos": {
+      "title": "Competition videos",
+      "sim": "Digital twin view (4× speed)",
+      "real": "Physical-world view (4× speed)",
+      "unsupported": "Your browser does not support video playback."
+    },
+    "item0": {
+      "period": "2025.11 — 2025.12",
+      "title": "OnSite Autonomous Driving Competition · National Champion",
+      "desc": "As a member of the national-champion team, helped complete closed-course vehicle runs across 15 scenario types, including pedestrian crossings, following, curves, merges, and roundabouts. Owned longitudinal decisions that combine traffic lights, pedestrians, and road geometry into safe speed limits using IDM and TTC. Developed and tuned CILQR local planning, supported NMPC tracking tests, and used RViz to expose road boundaries, predicted obstacle paths, and control states for faster debugging."
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "imgAlt": "Project image, replace with a project photo later",
+    "links": {
+      "onlineDoc": "Online document"
+    },
+    "item0": {
+      "period": "2025.08 — 2025.10",
+      "title": "Autonomous Control for SPMT Vehicles",
+      "desc": "For low-speed, heavy-duty SPMT path tracking and rear docking, integrated and calibrated inertial navigation, converted WGS84 positions to UTM, and compensated antenna, front, rear-axle, and docking points. Generated reference paths with Spline2D and computed lateral and heading errors. Tuned Pure Pursuit steering and PID speed control, then reviewed vehicle data from forward, reverse, figure-eight, double-lane-change, and docking tests to improve tracking and stopping accuracy."
+    }
+  },
+  "documents": {
+    "title": "Papers & Research Output",
+    "item0": {
+      "title": "Journal Paper",
+      "desc": "He Yi, Qiang Wang et al., Distributed model predictive formation control for multi-vehicle cooperative transport. Submitted to the Chinese Journal of Mechanical Engineering."
+    },
+    "item1": {
+      "title": "Invention Patent",
+      "desc": "Collaborative mapping method and system for multiple perception nodes; application 202510700786.6, publication CN120689443A, under substantive examination."
+    },
+    "item2": {
+      "title": "Software Copyright",
+      "desc": "Self-propelled modular transporter motion control system V1.0."
+    },
+    "item3": {
+      "title": "Master’s Thesis",
+      "desc": "Research focus: autonomous driving planning and control. Proposal approved."
+    }
+  },
+  "timeline": {
+    "title": "Timeline",
+    "event1": {
+      "date": "2026.06 — 2026.09",
+      "title": "Neolix · PNC Algorithm Internship",
+      "desc": "Worked on lateral decisions, adaptive speed planning, and space-time planning for delivery vehicles."
+    },
+    "event2": {
+      "date": "2026.04 — 2026.06",
+      "title": "Jiwei · PNC Algorithm Internship",
+      "desc": "Improved queue recognition, detour suppression, and oncoming-vehicle avoidance."
+    },
+    "event3": {
+      "date": "2026.03",
+      "title": "Journal Paper Submitted",
+      "desc": "Distributed model predictive formation control for multi-vehicle cooperative transport."
+    },
+    "event4": {
+      "date": "2025.12",
+      "title": "OnSite Autonomous Driving Competition · National Champion",
+      "desc": "Contributed to planning and control algorithms, RViz debugging, and closed-loop vehicle testing."
+    },
+    "event5": {
+      "date": "2025.08 — 2025.10",
+      "title": "SPMT Autonomous Vehicle Project",
+      "desc": "Worked on localization, path tracking, and vehicle testing; completed a software copyright registration."
+    },
+    "event6": {
+      "date": "2024.09 — Present",
+      "title": "Wuhan University of Technology · M.Eng.",
+      "desc": "Research focus: autonomous driving planning and control."
+    },
+    "event7": {
+      "date": "2020.09 — 2024.05",
+      "title": "Chongqing Jiaotong University · B.Eng.",
+      "desc": "Graduated with an Outstanding Graduate award."
+    }
+  },
+  "skills": {
+    "title": "Tech Stack",
+    "software": "Development Tools",
+    "optimalControl": "Optimal Control",
+    "planning": "Planning Algorithms"
+  },
+  "contact": {
+    "email": "Email",
+    "cv": "Resume",
+    "github": "GitHub",
+    "zhihu": "Zhihu",
+    "bilibili": "Bilibili"
+  },
+  "footer": {
+    "copyright": "© 2020-2026 Qiang Wang | Personal Homepage"
+  }
+}

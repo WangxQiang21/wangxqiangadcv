@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="王强的个人主页，介绍自动驾驶规划控制项目、研究成果与技术经历。">
+  <link rel="icon" href="assets/images/Avatar.jpg" type="image/jpeg">
+  <title>Qiang Wang's database</title>
+  
+  <script>
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
+
+  <link rel="stylesheet" href="assets/css/style.css?v=20261007-competition-video-v1">
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo" aria-label="Qiang Wang's database">
+        <span class="logo-terminal" aria-hidden="true"><span class="terminal-user">wang@pnc</span><span class="terminal-path">:~</span><span class="terminal-symbol">$</span><span class="terminal-cursor"></span></span>
+      </a>
+      
+      <div class="nav-actions">
+        <div class="nav-links">
+          <a href="#internships" data-i18n="nav.internships">实习</a>
+          <a href="#competitions" data-i18n="nav.competitions">竞赛</a>
+          <a href="#projects" data-i18n="nav.projects">项目</a>
+          <a href="#publications" data-i18n="nav.publications">论文</a>
+          <a href="#timeline" data-i18n="nav.timeline">时间轴</a>
+          <a href="#skills" data-i18n="nav.skills">技术栈</a>
+        </div>
+        <div class="nav-controls">
+          <button class="control-btn lang-toggle" aria-label="Switch to English">English</button>
+          <button class="control-btn theme-toggle" aria-label="切换主题">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="intro" class="intro">
+    <div class="bg-decoration"></div>
+    <div class="container flex-center column">
+      <div class="avatar-container">
+        <img src="assets/images/Avatar.jpg" alt="Avatar" class="avatar" data-i18n="intro.avatarAlt">
+        <div class="avatar-glow"></div>
+      </div>
+      <h1 class="gradient-text" data-i18n="intro.title">你好，我是王强</h1>
+      <p class="subtitle" data-i18n="intro.desc">...</p>
+      <div class="intro-contact-links" aria-label="联系方式与简历"></div>
+    </div>
+  </section>
+
+  <section id="internships" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="internships.title">实习</h2>
+      <div class="projects-grid internships-grid"></div>
+    </div>
+  </section>
+
+  <section id="competitions" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="competitions.title">竞赛</h2>
+      <div class="projects-grid competitions-grid"></div>
+    </div>
+  </section>
+
+  <section id="projects" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="projects.title">项目</h2>
+      <div class="projects-grid"></div>
+    </div>
+  </section>
+
+  <section id="publications" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="documents.title">论文</h2>
+      <div class="documents-grid"></div>
+    </div>
+  </section>
+
+  <section id="timeline" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="timeline.title">时间轴</h2>
+      <div class="timeline-container"></div>
+    </div>
+  </section>
+
+  <section id="skills" class="section-padding">
+    <div class="container">
+      <h2 data-i18n="skills.title">技术栈</h2>
+      <div class="skills-wrapper"></div>
+    </div>
+  </section>
+
+  <footer data-i18n="footer.copyright">© 2020-2026 王强 | 个人主页</footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js?v=20261007-competition-video-v1"></script>
+</body>
+</html>
