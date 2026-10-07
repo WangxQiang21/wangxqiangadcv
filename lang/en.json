@@ -54,7 +54,7 @@
       "onlineDoc": "Online document"
     },
     "item0": {
-      "period": "2025.08 — 2025.10",
+      "period": "2025.07 — 2025.08",
       "title": "Autonomous Control for SPMT Vehicles",
       "desc": "For low-speed, heavy-duty SPMT path tracking and rear docking, integrated and calibrated inertial navigation, converted WGS84 positions to UTM, and compensated antenna, front, rear-axle, and docking points. Generated reference paths with Spline2D and computed lateral and heading errors. Tuned Pure Pursuit steering and PID speed control, then reviewed vehicle data from forward, reverse, figure-eight, double-lane-change, and docking tests to improve tracking and stopping accuracy."
     }
