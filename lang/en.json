@@ -50,9 +50,6 @@
   "projects": {
     "title": "Projects",
     "imgAlt": "Project image, replace with a project photo later",
-    "links": {
-      "onlineDoc": "Online document"
-    },
     "item0": {
       "period": "2025.07 — 2025.08",
       "title": "Autonomous Control for SPMT Vehicles",

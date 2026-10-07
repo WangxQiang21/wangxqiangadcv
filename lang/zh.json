@@ -50,9 +50,6 @@
   "projects": {
     "title": "项目经历",
     "imgAlt": "项目图片，后续可替换",
-    "links": {
-      "onlineDoc": "在线文档"
-    },
     "item0": {
       "period": "2025.07 — 2025.08",
       "title": "SPMT 特种车辆自动驾驶控制",

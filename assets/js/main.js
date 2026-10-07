@@ -13,7 +13,6 @@
       titleKey: 'internships.item0.title',
       descKey: 'internships.item0.desc',
       tags: ['C++', 'PNC', 'CMPC / OSQP', 'Path iLQR'],
-      links: [{ href: 'https://wcntbxip3gdr.feishu.cn/wiki/ARtPwr2uIiqKiJkMsjYc78B1nbb?from=from_copylink', labelKey: 'projects.links.onlineDoc', icon: 'fas fa-book-open' }],
     },
     {
       images: [
