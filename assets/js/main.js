@@ -4,9 +4,9 @@
   // The link is encrypted so the public page does not expose it in plain text.
   // Access to the document itself is still governed by Feishu permissions.
   const PROTECTED_DOCUMENT = {
-    salt: '54LA1Z3HmPVHevnEpz3aBA==',
-    iv: '2AnWGeKz8pmV2oTq',
-    data: 'JWB1Bn0IrSlSca/PiFtcpBIS2tv22htCYZUwJAcIrglnnj6xCr8LkzzWILpF5mKEA563YJ1L1dQlyv7K/TZaZ91oba8d30UsEMEL+cxHR4sbcGkZAkj1HMxZIkWx8ZUcPWI=',
+    salt: 'Vh6EK4p3HQlgXVBElm/6jQ==',
+    iv: 'XNlk+ZNPMT/pL//t',
+    data: '0Z6H8SmZgD/8TPPVwEkFFV3jKt1wSLQwLiww4lqjB3l2sEcu9yBY2Xc6CBOYuvwfbsEP6AWo5tYrlKPgW4jQUwPGe7gHRCwZ22rH3RfLiStGeDQBszmithafbr5Alt0g4Pg=',
   };
 
   const INTERNSHIPS = [
