@@ -1,6 +1,14 @@
 (() => {
   let imageCarouselTimers = [];
 
+  // The link is encrypted so the public page does not expose it in plain text.
+  // Access to the document itself is still governed by Feishu permissions.
+  const PROTECTED_DOCUMENT = {
+    salt: '54LA1Z3HmPVHevnEpz3aBA==',
+    iv: '2AnWGeKz8pmV2oTq',
+    data: 'JWB1Bn0IrSlSca/PiFtcpBIS2tv22htCYZUwJAcIrglnnj6xCr8LkzzWILpF5mKEA563YJ1L1dQlyv7K/TZaZ91oba8d30UsEMEL+cxHR4sbcGkZAkj1HMxZIkWx8ZUcPWI=',
+  };
+
   const INTERNSHIPS = [
     {
       images: [
@@ -13,6 +21,7 @@
       titleKey: 'internships.item0.title',
       descKey: 'internships.item0.desc',
       tags: ['C++', 'PNC', 'CMPC / OSQP', 'Path iLQR'],
+      protectedDocument: true,
     },
     {
       images: [
@@ -201,6 +210,33 @@
     return items || extraAction ? `<div class="project-actions">${extraAction}${items}</div>` : '';
   }
 
+  function fromBase64(value) {
+    return Uint8Array.from(atob(value), (char) => char.charCodeAt(0));
+  }
+
+  async function unlockDocument(password) {
+    const passwordKey = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey'],
+    );
+    const key = await crypto.subtle.deriveKey(
+      { name: 'PBKDF2', salt: fromBase64(PROTECTED_DOCUMENT.salt), iterations: 250000, hash: 'SHA-256' },
+      passwordKey,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt'],
+    );
+    const plain = await crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv: fromBase64(PROTECTED_DOCUMENT.iv) },
+      key,
+      fromBase64(PROTECTED_DOCUMENT.data),
+    );
+    const url = new URL(new TextDecoder().decode(plain));
+    if (url.protocol !== 'https:' || url.hostname !== 'wcntbxip3gdr.feishu.cn' || !url.pathname.startsWith('/wiki/')) {
+      throw new Error('Invalid document URL');
+    }
+    return url.href;
+  }
+
   function initThemeToggle() {
     const toggleBtn = qs('.theme-toggle');
     const htmlEl = document.documentElement;
@@ -243,7 +279,10 @@
       const videoActionHtml = videoPanelId
         ? `<button type="button" class="project-action project-video-toggle" aria-controls="${videoPanelId}" aria-expanded="false"><i class="fas fa-play" aria-hidden="true"></i><span>${t('competitions.links.video')}</span></button>`
         : '';
-      const actionsHtml = renderProjectActions(item.links, videoActionHtml);
+      const protectedDocumentActionHtml = item.protectedDocument
+        ? `<button type="button" class="project-action protected-document-toggle"><i class="fas fa-book-open" aria-hidden="true"></i><span>${t('internships.protectedDocument.button')}</span></button>`
+        : '';
+      const actionsHtml = renderProjectActions(item.links, videoActionHtml + protectedDocumentActionHtml);
       const periodHtml = item.periodKey ? `<p class="project-period">${t(item.periodKey)}</p>` : '';
       const images = item.images || [{ src: item.img, fit: item.imageFit }];
       const imageAlt = t(item.imageAltKey || 'projects.imgAlt');
@@ -296,6 +335,64 @@
 
   function initInternships() {
     renderImageCards('.internships-grid', INTERNSHIPS);
+  }
+
+  function initProtectedDocument() {
+    qs('.protected-document-dialog')?.remove();
+    const button = qs('.protected-document-toggle');
+    if (!button) return;
+
+    const dialog = document.createElement('dialog');
+    dialog.className = 'protected-document-dialog';
+    dialog.innerHTML = `
+      <form class="protected-document-form">
+        <h3>${t('internships.protectedDocument.title')}</h3>
+        <p>${t('internships.protectedDocument.help')}</p>
+        <label for="protected-document-password">${t('internships.protectedDocument.password')}</label>
+        <input id="protected-document-password" type="password" autocomplete="off" required>
+        <p class="protected-document-error" role="alert" hidden></p>
+        <div class="protected-document-actions">
+          <button type="button" class="project-action protected-document-cancel">${t('internships.protectedDocument.cancel')}</button>
+          <button type="submit" class="project-action protected-document-submit">${t('internships.protectedDocument.open')}</button>
+        </div>
+      </form>
+    `;
+    document.body.appendChild(dialog);
+
+    const form = qs('form', dialog);
+    const input = qs('input', dialog);
+    const error = qs('.protected-document-error', dialog);
+    const submit = qs('.protected-document-submit', dialog);
+
+    button.addEventListener('click', () => dialog.showModal());
+    qs('.protected-document-cancel', dialog).addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => {
+      form.reset();
+      error.hidden = true;
+      error.textContent = '';
+      submit.disabled = false;
+    });
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      submit.disabled = true;
+      try {
+        const url = await unlockDocument(input.value);
+        dialog.close();
+        window.location.assign(url);
+      } catch (unlockError) {
+        error.textContent = t(
+          unlockError instanceof DOMException && unlockError.name === 'OperationError'
+            ? 'internships.protectedDocument.incorrect'
+            : 'internships.protectedDocument.unavailable',
+        );
+        error.hidden = false;
+        input.select();
+        input.focus();
+      } finally {
+        submit.disabled = false;
+      }
+    });
   }
 
   function initCompetitions() {
@@ -618,6 +715,7 @@
   window.addEventListener('i18nLoaded', () => {
     console.log('[main] i18n loaded, rendering content...');
     initInternships();
+    initProtectedDocument();
     initCompetitions();
     initCompetitionVideos();
     initProjects();

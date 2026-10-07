@@ -678,10 +678,44 @@ h2::after {
   transform: translateY(-1px);
 }
 
-.project-video-toggle {
+.project-video-toggle,
+.protected-document-toggle,
+.protected-document-actions button {
   font-family: inherit;
   cursor: pointer;
 }
+
+.protected-document-dialog {
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 24px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: var(--shadow-hover);
+}
+
+.protected-document-dialog::backdrop { background: rgba(0, 0, 0, 0.55); }
+.protected-document-dialog h3 { margin-bottom: 8px; }
+.protected-document-dialog p { color: var(--text-muted); margin-bottom: 16px; }
+.protected-document-dialog label { display: block; font-weight: 600; margin-bottom: 6px; }
+.protected-document-dialog input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-editor);
+  color: var(--text-main);
+  font: inherit;
+}
+.protected-document-dialog .protected-document-error { color: #c33535; margin: 8px 0 0; }
+.protected-document-error[hidden] { display: none; }
+.protected-document-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.protected-document-submit { background: var(--bg-active); }
+.protected-document-submit:disabled { opacity: 0.6; cursor: wait; }
 
 .competition-video-showcase {
   padding: 24px;

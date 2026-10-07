@@ -14,6 +14,16 @@
   },
   "internships": {
     "title": "Internship Experience",
+    "protectedDocument": {
+      "button": "Online document",
+      "title": "View Neolix internship document",
+      "help": "Enter the access password to open the Feishu document.",
+      "password": "Access password",
+      "cancel": "Cancel",
+      "open": "Open document",
+      "incorrect": "Incorrect password. Please try again.",
+      "unavailable": "The document cannot be opened right now. Please try again later."
+    },
     "item0": {
       "period": "2026.06 — 2026.09",
       "title": "Neolix · PNC Algorithm Intern",
