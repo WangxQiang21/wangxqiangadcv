@@ -183,6 +183,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 2px;
+  white-space: nowrap;
   height: 24px;
   padding: 0 8px;
   border: 1px solid var(--border-light);
@@ -820,6 +821,10 @@ footer {
 }
 
 @media (max-width: 360px) {
+  .nav-container { grid-template-columns: minmax(0, 1fr); }
+  .nav-controls { grid-column: 1; grid-row: 2; }
+  .nav-links { grid-column: 1; grid-row: 3; }
+  section[id] { scroll-margin-top: 176px; }
   .gradient-text { font-size: 1.75rem; }
 }
 
