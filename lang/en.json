@@ -10,7 +10,7 @@
   "intro": {
     "avatarAlt": "Qiang Wang's portrait",
     "title": "Hello, I'm Qiang Wang",
-    "desc": "I am a 2027 master’s candidate in Transportation Engineering at Wuhan University of Technology, focusing on autonomous driving planning and control. At Jiwei and Neolix, I contributed to production issue diagnosis, simulation validation, complex obstacle avoidance, speed planning, and joint path-speed optimization. Proficient in C++, ROS, and optimization-based control, I competed in the OnSite Virtual-Physical Integrated Autonomous Driving Competition, supporting real-vehicle integration across 15 scenario types—including pedestrian crossings, car following, curves, merges, and roundabouts—and won the national championship with my team."
+    "desc": "I am a 2027 master’s candidate in Transportation Engineering at Wuhan University of Technology, focusing on autonomous driving planning and control. At Jiwei and Neolix, I worked across production issue diagnosis, simulation, obstacle avoidance, speed planning, and joint path-speed optimization. I use C++, ROS, and optimization-based control. I competed in the OnSite Virtual-Physical Integrated Autonomous Driving Competition, helping debug real vehicles across 15 scenario types—including pedestrian crossings, car following, curves, merges, and roundabouts—and ultimately won the national championship with my team."
   },
   "internships": {
     "title": "Internship Experience",
