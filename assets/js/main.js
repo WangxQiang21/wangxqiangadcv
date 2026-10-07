@@ -129,7 +129,7 @@
   ];
 
   const CONTACT_LINKS = [
-    { icon: 'fas fa-file-pdf', key: 'contact.cv', link: 'file/CV-CN.pdf' },
+    { icon: 'fas fa-file-pdf', key: 'contact.cv', link: 'file/CV-CN.pdf?v=c1169aa3' },
     { icon: 'fab fa-github', key: 'contact.github', link: 'https://github.com/wangxqiang21' },
     { icon: 'fab fa-zhihu', key: 'contact.zhihu', link: 'https://www.zhihu.com/people/gu-max-27' },
     { icon: 'fab fa-bilibili', key: 'contact.bilibili', link: 'https://space.bilibili.com/433270257' },
