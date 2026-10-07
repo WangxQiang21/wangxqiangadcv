@@ -123,7 +123,13 @@
     "planning": "Planning Algorithms"
   },
   "contact": {
+    "details": "Contact",
     "email": "Email",
+    "wechat": "WeChat",
+    "phone": "Phone",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Copy failed, please try again",
     "cv": "Resume",
     "github": "GitHub",
     "zhihu": "Zhihu",

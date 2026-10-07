@@ -122,8 +122,13 @@
     },
   ];
 
+  const CONTACT_FIELDS = [
+    { key: 'contact.email', value: 'wangxqiang21@163.com' },
+    { key: 'contact.wechat', value: 'real_wq_15707280747' },
+    { key: 'contact.phone', value: '15707280747' },
+  ];
+
   const CONTACT_LINKS = [
-    { icon: 'fas fa-envelope', key: 'contact.email', link: 'mailto:wangxqiang21@163.com' },
     { icon: 'fas fa-file-pdf', key: 'contact.cv', link: 'file/CV-CN.pdf' },
     { icon: 'fab fa-github', key: 'contact.github', link: 'https://github.com/wangxqiang21' },
     { icon: 'fab fa-zhihu', key: 'contact.zhihu', link: 'https://www.zhihu.com/people/gu-max-27' },
@@ -141,6 +146,27 @@
   function clear(el) {
     if (!el) return;
     el.innerHTML = '';
+  }
+
+  async function copyText(value) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+
+    const input = document.createElement('textarea');
+    input.value = value;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    let copied = false;
+    try {
+      input.select();
+      copied = document.execCommand('copy');
+    } finally {
+      input.remove();
+    }
+    if (!copied) throw new Error('Copy failed');
   }
 
   function t(key) {
@@ -442,6 +468,56 @@
     if (!container) return;
     clear(container);
 
+    const dropdown = document.createElement('details');
+    dropdown.className = 'contact-dropdown';
+
+    const trigger = document.createElement('summary');
+    trigger.className = 'intro-contact-link contact-trigger';
+    trigger.innerHTML = `<span>${t('contact.details')}</span><i class="fas fa-chevron-down" aria-hidden="true"></i>`;
+    dropdown.appendChild(trigger);
+
+    const menu = document.createElement('div');
+    menu.className = 'contact-menu';
+    CONTACT_FIELDS.forEach(({ key, value }) => {
+      const label = t(key);
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'contact-copy-item';
+      item.title = `${t('contact.copy')} ${label}`;
+      item.setAttribute('aria-label', `${t('contact.copy')} ${label}：${value}`);
+
+      const labelEl = document.createElement('span');
+      labelEl.className = 'contact-copy-label';
+      labelEl.textContent = label;
+
+      const valueEl = document.createElement('span');
+      valueEl.className = 'contact-copy-value';
+      valueEl.textContent = value;
+
+      const icon = document.createElement('i');
+      icon.className = 'far fa-copy';
+      icon.setAttribute('aria-hidden', 'true');
+
+      const status = document.createElement('span');
+      status.className = 'contact-copy-status';
+      status.setAttribute('aria-live', 'polite');
+
+      item.append(labelEl, valueEl, icon, status);
+      item.addEventListener('click', async () => {
+        qsa('.contact-copy-status', menu).forEach((el) => { el.textContent = ''; });
+        try {
+          await copyText(value);
+          status.textContent = t('contact.copied');
+        } catch (error) {
+          status.textContent = t('contact.copyFailed');
+        }
+      });
+      menu.appendChild(item);
+    });
+
+    dropdown.appendChild(menu);
+    container.appendChild(dropdown);
+
     CONTACT_LINKS.forEach((contact) => {
       const label = t(contact.key);
       const item = document.createElement('a');
@@ -457,6 +533,19 @@
       container.appendChild(item);
     });
   }
+
+  document.addEventListener('pointerdown', (event) => {
+    const dropdown = qs('.contact-dropdown');
+    if (dropdown?.open && !dropdown.contains(event.target)) dropdown.open = false;
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const dropdown = qs('.contact-dropdown');
+    if (!dropdown?.open) return;
+    dropdown.open = false;
+    qs('.contact-trigger', dropdown)?.focus();
+  });
 
   function initSmoothScroll() {
     qsa('a[href^="#"]').forEach((anchor) => {
